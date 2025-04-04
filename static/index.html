@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MPV Remote Control</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: #222;
+        color: white;
+      }
+      button {
+        font-size: 18px;
+        margin: 10px;
+        padding: 15px;
+        width: 150px;
+        background: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎬 MPV Remote Control</h1>
+
+    <button onclick="sendCommand('play')">▶ Play</button>
+    <button onclick="sendCommand('pause')">⏸ Pause</button>
+    <button onclick="sendCommand('stop')">⏹ Stop</button>
+
+    <br />
+    <button onclick="sendCommand('seek_backward')">⏪ Rewind 10s</button>
+    <button onclick="sendCommand('seek_forward')">⏩ Forward 10s</button>
+
+    <br />
+    <button onclick="sendCommand('volume_down')">🔉 Volume -</button>
+    <button onclick="sendCommand('volume_up')">🔊 Volume +</button>
+
+    <br />
+    <button onclick="sendCommand('prev_track')">⏮ Prev Track</button>
+    <button onclick="sendCommand('next_track')">⏭ Next Track</button>
+
+    <script>
+      function sendCommand(command) {
+        fetch(`/mpv/${command}`, { method: "POST" })
+          .then((response) => response.text())
+          .then((data) => console.log(data))
+          .catch((error) => console.error("Error:", error));
+      }
+    </script>
+  </body>
+</html>
