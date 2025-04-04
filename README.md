@@ -57,6 +57,7 @@ This project is a web-based controller for **MPV Media Player** built with **Rus
 - The API sends JSON commands to MPV via a **Unix socket** (`/tmp/mpvsocket`).
 - The Rust server reads responses and updates the internal media state.
 - A background thread continuously logs playback status.
+- The frontend can also be accessed from any device that's on the same network in which the program is being run using the network's IP address.
 
 ## Troubleshooting
 - Ensure MPV is running with `--input-ipc-server=/tmp/mpvsocket`
